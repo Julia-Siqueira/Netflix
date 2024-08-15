@@ -1,0 +1,3 @@
+por enquanto, tá acontecendo assim:
+na página onde nós definimos os atributos do filme, também tem a parte onde eles são mostrados, e isso está acontecendo simultâneamente:
+enquanto definimos as coisas, elas já vão aparecendo, já que o onChangeText={(e) => {setIdioma(e)}} vai pegando caractere por caractere
