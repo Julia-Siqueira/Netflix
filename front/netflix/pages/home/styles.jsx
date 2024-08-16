@@ -55,6 +55,15 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    btnD:{
+      width: '5%',
+      height: 30,
+      backgroundColor: '#d4778e',
+      marginLeft: 15,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   })
   
   export default styles // é default porque é só o styles

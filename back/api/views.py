@@ -27,6 +27,6 @@ class MoviesViews(ListCreateAPIView):
     serializer_class = MoviesSerializer
 
 class MoviesDetailViews(RetrieveUpdateDestroyAPIView):
-    queryset = Movies.objects.all()
-    serializer_class = MoviesSerializer
+    queryset = Movies.objects.all() # conjunto de dados com o qual a view vai trabalhar e onde ele vai pesquisar
+    serializer_class = MoviesSerializer # depois que ele encontra, ele transforma em JSON
     
