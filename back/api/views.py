@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view # responsible for the methods we are going to use (POST, GET...)
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import status
+from django.shortcuts import render
 
 @api_view(['GET', 'POST'])
 def list_movies(request):
@@ -29,4 +30,6 @@ class MoviesViews(ListCreateAPIView):
 class MoviesDetailViews(RetrieveUpdateDestroyAPIView):
     queryset = Movies.objects.all() # conjunto de dados com o qual a view vai trabalhar e onde ele vai pesquisar
     serializer_class = MoviesSerializer # depois que ele encontra, ele transforma em JSON
-    
+
+def home(request):
+    return render(request, 'home.html')

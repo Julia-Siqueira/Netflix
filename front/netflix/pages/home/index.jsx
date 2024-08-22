@@ -50,6 +50,13 @@ export default function Home(){
 
       await axios.post('http://127.0.0.1:8000/api/movieslist/', novoFilme) // ele posta dentro do JSON o novo filme já em formato JSON
       alert('Filme adicionado')
+      setAno('')
+      setClassif('')
+      setFilme('')
+      setGenero('')
+      setIdioma('')
+      
+
 
     }catch{
       console.log(Error)
