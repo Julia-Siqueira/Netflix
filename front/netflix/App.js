@@ -1,8 +1,8 @@
-import Home from "./pages/home";
-// importando uma página
+import Routers from "./routers"
+// importando as páginas
 
 export default function App(){
     return(
-        <Home/> // mostrando a página na tela principal
+        <Routers/> // mostrando a página na tela principal
     )
 }

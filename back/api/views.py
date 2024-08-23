@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view # responsible for the methods we 
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import status
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST'])
 def list_movies(request):
@@ -24,10 +25,12 @@ def list_movies(request):
 
 
 class MoviesViews(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Movies.objects.all()
     serializer_class = MoviesSerializer
 
 class MoviesDetailViews(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Movies.objects.all() # conjunto de dados com o qual a view vai trabalhar e onde ele vai pesquisar
     serializer_class = MoviesSerializer # depois que ele encontra, ele transforma em JSON
 
