@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Text, View, TextInput, Button, Pressable } from 'react-native';
 import styles from './styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // todas as telas precisam exportar alguma coisa
 export default function Home(){
@@ -20,11 +21,37 @@ export default function Home(){
   const[ano, setAno] = useState('')
   const[classif, setClassif] = useState('')
   const[idioma, setIdioma] = useState('')
+  const[token, setToken] = useState('')
+  
+  useEffect(() => {
+    AsyncStorage.getItem('token')
+        .then(
+            (response) => {
+                if(token != null){
+                    console.log('Token Home: ', response)
+                    setToken(response)
+                }
+            }
+        )
+        .catch(
+            (error) =>{
+                console.error('Erro ao salvar o Token: ', error)
+            }
+        )
+}, [token])
+
+
 
   const capturar = async () =>{
-    try{
+    
+      try{
         const response = await axios.get(
-          'http://127.0.0.1:8000/api/movie/' + index
+          'http://127.0.0.1:8000/api/movie/' + index,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         )
         console.log(response.data)
         setFilmeG(response.data.title)
@@ -32,10 +59,13 @@ export default function Home(){
         setAnoG(response.data.year)
         setClassifG(response.data.age_rating)
         setIdiomaG(response.data.language)
+        
 
     }catch{
       console.log(Error)
-    }
+    
+    } 
+    
   }
 
   const postar = async () =>{
