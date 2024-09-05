@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       width: '90%',
       marginBottom: 10,
+      padding: 10,
+      outlineWidth: 0
   
       
     },
@@ -35,7 +37,10 @@ const styles = StyleSheet.create({
       borderRadius: 8,
       backgroundColor: 'white',
       borderColor: 'white',
-      marginBottom: 10
+      marginBottom: 10,
+      padding: 10,
+      outlineWidth: 0
+      
     },
     btn:{
       width: '5%',

@@ -70,6 +70,14 @@ export default function Home(){
 
   const postar = async () =>{
     try{
+      const response = await axios.get(
+          'http://127.0.0.1:8000/api/movie/' + index,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
       const novoFilme = {
         title: filme, // essas são as variáveis que foram alteradas pelo UseState
         genre: genero,
@@ -86,8 +94,6 @@ export default function Home(){
       setGenero('')
       setIdioma('')
       
-
-
     }catch{
       console.log(Error)
       alert('Erro ao adicionar o filme');
@@ -97,14 +103,21 @@ export default function Home(){
 
   const atualizar = async () => {
     try{
-      const response = await axios.put(
-        'http://127.0.0.1:8000/api/movie/' + index,
+
+      const response = {
+        title: filmeG, // pegando as variáveis que o GET trás
+        genre: generoG,
+        year: anoG,
+        age_rating: classifG,
+        language: idiomaG,
+      }
+
+      await axios.put(
+        'http://127.0.0.1:8000/api/movie/' + index, response,
         {
-          title: filmeG, // pegando as variáveis que o GET trás
-          genre: generoG,
-          year: anoG,
-          age_rating: classifG,
-          language: idiomaG
+           headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
       alert('Alterado com sucesso!')
@@ -118,7 +131,11 @@ export default function Home(){
   const deletar = async () => {
     try{
       const response = await axios.delete(
-        'http://127.0.0.1:8000/api/movie/' + index,
+        'http://127.0.0.1:8000/api/movie/' + index,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
       )
       alert('Deletado com sucesso!')
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Movies
+from .models import Movies, Genre
 from .serializer import MoviesSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view # responsible for the methods we are going to use (POST, GET...)
