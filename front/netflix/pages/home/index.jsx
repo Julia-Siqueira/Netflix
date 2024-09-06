@@ -70,14 +70,6 @@ export default function Home(){
 
   const postar = async () =>{
     try{
-      const response = await axios.get(
-          'http://127.0.0.1:8000/api/movie/' + index,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
       const novoFilme = {
         title: filme, // essas são as variáveis que foram alteradas pelo UseState
         genre: genero,
@@ -86,16 +78,25 @@ export default function Home(){
         language: idioma
       };
 
-      await axios.post('http://127.0.0.1:8000/api/movieslist/', novoFilme) // ele posta dentro do JSON o novo filme já em formato JSON
+      await axios.post(
+          'http://127.0.0.1:8000/api/movieslist/', novoFilme, // tem que ser com vírgula, pra não concatenar!!
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      
       alert('Filme adicionado')
       setAno('')
       setClassif('')
       setFilme('')
       setGenero('')
       setIdioma('')
+      console.log('deu certo')
       
-    }catch{
-      console.log(Error)
+    }catch (error){
+      console.log(error)
       alert('Erro ao adicionar o filme');
 
     }
