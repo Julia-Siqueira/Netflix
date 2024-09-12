@@ -6,7 +6,10 @@ const styles = StyleSheet.create({
     container:{
       backgroundColor: '#F3F5F6',
       flex: 1,
-      padding: 20,
+      paddingTop: 10,
+      paddingRight: 10,
+      paddingLeft: 10,
+      paddingBottom: 1
     },
     get:{
       backgroundColor: '#DCD6F7',
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
       
     },
     btn:{
-      width: '5%',
+      width: '10%',
       height: 30,
       backgroundColor: '#94A1DB',
       marginLeft: 15,
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     btnP:{
-      width: '5%',
+      width: '15%',
       height: 30,
       backgroundColor: '#5F958E',
       marginLeft: 15,
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     btnD:{
-      width: '5%',
+      width: '15%',
       height: 30,
       backgroundColor: '#d4778e',
       marginLeft: 15,
@@ -69,6 +72,21 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    aic: {
+      width: '30%'
+    },
+    global:{
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    divImagem:{
+      height: '180px',
+      width: '150px',
+      backgroundColor: '#CDCDCD',
+      margin: '20px',
+      borderRadius: '10px',
+      float: 'right'
+    }
   })
   
   export default styles // é default porque é só o styles

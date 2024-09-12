@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         margin: '10px',
       },
+      aic: {
+        width: '30%'
+      }
 })
 
 export default styles

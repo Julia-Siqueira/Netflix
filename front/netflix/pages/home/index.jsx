@@ -53,12 +53,20 @@ export default function Home(){
             },
           }
         )
+        const responseG = await axios.get(
+          'http://127.0.0.1:8000/api/genre/' + index,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          } // retorna um JSON
+        )
         console.log(response.data)
-        setFilmeG(response.data.title)
-        setGeneroG(response.data.genre)
-        setAnoG(response.data.year)
-        setClassifG(response.data.age_rating)
-        setIdiomaG(response.data.language)
+        setFilmeG(response.data.title) // pegando o titulo do JSON
+        setGeneroG(responseG.data.genre) // o gênero do JSON
+        setAnoG(response.data.year) // o ano do JSON
+        setClassifG(response.data.age_rating) // a classificação do JSON
+        setIdiomaG(response.data.language) // o idioma do JSON
         
 
     }catch{
@@ -196,29 +204,40 @@ export default function Home(){
           />
           {/* mostrando qual é o gênero do fime e também pegando as informações para o PUT*/}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Ano</Text>
-          <TextInput
-            value={anoG}
-            style={styles.caixaGet}
-            onChangeText={ (e) => setAnoG(e)}
-          />
-          {/* mostrando de qual ano é o filme e também pegando as informações para o PUT*/}
+          <View style={styles.global}>
+            <View style={styles.aic}>
+            <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Ano</Text>
+            <TextInput
+              value={anoG}
+              style={styles.caixaGet}
+              onChangeText={ (e) => setAnoG(e)}
+            />
+            {/* mostrando de qual ano é o filme e também pegando as informações para o PUT*/}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Classificação</Text>
-          <TextInput
-            value={classifG}
-            style={styles.caixaGet}
-            onChangeText={ (e) => setClassifG(e)}
-          />
-          {/* mostrando qual é a classificação do filme e também pegando as informações para o PUT*/}
+            <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Classificação</Text>
+            <TextInput
+              value={classifG}
+              style={styles.caixaGet}
+              onChangeText={ (e) => setClassifG(e)}
+            />
+            {/* mostrando qual é a classificação do filme e também pegando as informações para o PUT*/}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Idioma</Text>
-          <TextInput
-            value={idiomaG}
-            style={styles.caixaGet}
-            onChangeText={ (e) => setIdiomaG(e)}
-          />
-          {/* mostrando qual é o idioma do filme e também pegando as informações para o PUT*/}
+            <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Idioma</Text>
+            <TextInput
+              value={idiomaG}
+              style={styles.caixaGet}
+              onChangeText={ (e) => setIdiomaG(e)}
+            />
+            {/* mostrando qual é o idioma do filme e também pegando as informações para o PUT*/}
+            </View>
+
+            <View style={styles.divImagem}>
+
+            </View>
+
+          </View>
+          
+          
         </View>
         {/* ============================================================================================= */}
        
@@ -244,38 +263,50 @@ export default function Home(){
           />
           {/* enquanto digitamos, ele vai definindo o gênero do filme */}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Ano</Text>
-          <TextInput
-            value={ano}
-            onChangeText={(e) => {setAno(e)}}
-            style={styles.caixaGet}
-          />
-          {/* enquanto digitamos, ele vai defininfo o ano do filme */}
+          <View style={styles.global}>
+            <View style={styles.aic}>
+              <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Ano</Text>
+              <TextInput
+                value={ano}
+                onChangeText={(e) => {setAno(e)}}
+                style={styles.caixaGet}
+              />
+              {/* enquanto digitamos, ele vai defininfo o ano do filme */}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Classificação</Text>
-          <TextInput
-            value={classif}
-            onChangeText={(e) => {setClassif(e)}}
-            style={styles.caixaGet}
-          />
-          {/* enquanto digitamos, ele vai definindo a classificação do filme */}
+              <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Classificação</Text>
+              <TextInput
+                value={classif}
+                onChangeText={(e) => {setClassif(e)}}
+                style={styles.caixaGet}
+              />
+              {/* enquanto digitamos, ele vai definindo a classificação do filme */}
 
-          <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Idioma</Text>
-          <TextInput
-            value={idioma}
-            onChangeText={(e) => {setIdioma(e)}}
-            style={styles.caixaGet}
-          />
-          {/* enquanto digitamos, ele vai definindo o idioma do filme */}
+              <Text style={{marginBottom: 10, fontWeight: 'bold'}}>Idioma</Text>
+              <TextInput
+                value={idioma}
+                onChangeText={(e) => {setIdioma(e)}}
+                style={styles.caixaGet}
+              />
+              {/* enquanto digitamos, ele vai definindo o idioma do filme */}
+              </View>
 
+              <View style={styles.divImagem}>
+
+              </View>
+          </View>
           <Pressable style={styles.btnP} onPress={postar}>
             <Text style={{fontWeight: 'bold', alignItems:'center', color: 'white'}}>POST</Text>
           </Pressable>
+
+          </View>
+          
+
+          
           {/* ================================================================================= */}
 
         </View>
        
-        </View>
+       
       
     )
   
