@@ -61,11 +61,20 @@ export default function Home(){
             },
           } // retorna um JSON
         )
+        const responseR = await axios.get(
+          'http://127.0.0.1:8000/api/age_rating/' + index,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            }
+          }
+        )
+
         console.log(response.data)
         setFilmeG(response.data.title) // pegando o titulo do JSON
         setGeneroG(responseG.data.genre) // o gênero do JSON
         setAnoG(response.data.year) // o ano do JSON
-        setClassifG(response.data.age_rating) // a classificação do JSON
+        setClassifG(responseR.data.age_rating) // a classificação do JSON
         setIdiomaG(response.data.language) // o idioma do JSON
         
 

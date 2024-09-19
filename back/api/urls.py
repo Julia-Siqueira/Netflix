@@ -4,6 +4,8 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -12,5 +14,6 @@ urlpatterns = [
     path('movie/<int:pk>', views.MoviesDetailViews.as_view()),  # com a PK, acessamos livros individualmente
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('genre/<int:pk>', views.GenreView.as_view())
-]
+    path('genre/<int:pk>', views.GenreView.as_view()),
+    path('age_rating/<int:pk>', views.RatingView.as_view())
+] 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Movies, Genre
-from .serializer import MoviesSerializer, GenreSerializer
+from .models import Movies, Genre, Age_rating
+from .serializer import MoviesSerializer, GenreSerializer, RatingSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view # responsible for the methods we are going to use (POST, GET...)
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
@@ -30,13 +30,17 @@ class MoviesViews(ListCreateAPIView):
     serializer_class = MoviesSerializer
 
 class MoviesDetailViews(RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = Movies.objects.all() # conjunto de dados com o qual a view vai trabalhar e onde ele vai pesquisar
     serializer_class = MoviesSerializer # depois que ele encontra, ele transforma em JSON
 
 class GenreView(RetrieveUpdateDestroyAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+
+class RatingView(RetrieveUpdateDestroyAPIView):
+    queryset = Age_rating.objects.all()
+    serializer_class = RatingSerializer
 
 def home(request):
     return render(request, 'home.html')
